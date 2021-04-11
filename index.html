@@ -11,9 +11,14 @@
     <header>
       Weather Dashboard
     </header>
-    <div class="custom-control custom-checkbox my-1 mr-sm-2">
-      <input type='text' class='form-control-plaintext border-dark custom-text' id="locationInput" placeholder="Enter your location">
-      <button type="submit" class="btn btn-primary my-1">Search</button>
+    <div id="search" class="custom-control custom-checkbox my-1 mr-sm-2">
+      <input type='text' class='form-control-plaintext border-dark custom-text' id="locationInput" placeholder="Search for a city">
+      <button id="submit" class="btn btn-primary my-1">Search</button>
+    </div>
+    <div class="card">
+      <h2>Display Results</h2>
+      <p><strong>Search Results</strong> <span id="location-span"></span></p>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

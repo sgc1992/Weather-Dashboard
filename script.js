@@ -6,10 +6,12 @@ submitButton.addEventListener('click', function (name) {
 var locationInput = document.querySelector("#locationInput")
 console.log(locationInput.value)
 
-  fetch('https://api.openweathermap.org/data/2.5/weather?q='+locationInput+'&appid='+'07d0c65f5c20674ff54bcddb4b9e892f')
+  fetch('http://api.openweathermap.org/data/2.5/weather?q='+locationInput.value+'&appid='+'07d0c65f5c20674ff54bcddb4b9e892f')
     .then(response => response.json())
     .then(data => {
      console.log(data) 
-
+     document.getElementById("current-location").textContent = data.name;
+     document.getElementById("current-temp").textContent = data.main.temp;
     })
+
   })

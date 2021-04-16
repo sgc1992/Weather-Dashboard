@@ -12,6 +12,8 @@ console.log(locationInput.value)
      console.log(data) 
      document.getElementById("current-location").textContent = data.name;
      document.getElementById("current-temp").textContent = data.main.temp;
-    })
+     document.getElementById("wind").textContent = data.wind.speed;
+     document.getElementById("humidity").textContent = data.main.humidity;
+     })
 
   })

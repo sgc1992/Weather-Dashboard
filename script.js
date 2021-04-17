@@ -15,16 +15,10 @@ submitButton.addEventListener('click', function (name) {
       document.getElementById("wind").textContent = data.wind.speed;
       document.getElementById("humidity").textContent = data.main.humidity;
     })
-
-
-    
-
-
-    
   fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-    
-})
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+
+    })
 })

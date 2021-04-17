@@ -11,7 +11,9 @@ submitButton.addEventListener('click', function (name) {
     .then(data => {
       console.log(data)
       var icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-      document.getElementById("icon").attr('src', icon);
+      var newImage = document.createElement("img") //make an img tag.
+      newImage.setAttribute('src', icon)
+      document.getElementById("icon").append(newImage);
       document.getElementById("current-location").textContent = data.name;
       document.getElementById("current-temp").textContent = data.main.temp;
       document.getElementById("wind").textContent = data.wind.speed;

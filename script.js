@@ -6,7 +6,7 @@ submitButton.addEventListener('click', function (name) {
   var locationInput = document.querySelector("#locationInput")
   console.log(locationInput.value)
 
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f')
+  fetch('http://api.openweathermap.org/data/2.5/weather?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f'+'&units=metric')
     .then(response => response.json())
     .then(data => {
       console.log(data)

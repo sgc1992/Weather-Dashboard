@@ -19,10 +19,9 @@ submitButton.addEventListener('click', function (name) {
       document.getElementById("wind").textContent = data.wind.speed;
       document.getElementById("humidity").textContent = data.main.humidity;
       // document.getElementById("uv-index").textContent = data.main.humidity;
-      window.localStorage.setItem('current-location', 'data.name');
-      window.localStorage.setItem('current-temp', 'data.main.temp');
-      window.localStorage.setItem('current-location', 'data.wind.speed');
-      window.localStorage.setItem('current-location', 'data.main.humidity');
+      varkey = current-location.value;
+      varValue = data.name.value;
+      window.localStorage.setItem(varkey, varValue);
     })
 
 

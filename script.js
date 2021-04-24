@@ -45,19 +45,22 @@ submitButton.addEventListener('click', function (name) {
       var div =document.createElement("div");
       div.textContent=wind
       displayResults.appendChild(div);
-      
+
     })
 
 
-  fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f')
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f'+ '&units=metric')
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      for (var i = 0; i < data.list.length; i++) {
-        // console.log(data.list[i])
-        var time = moment(data.list[i].dt)
-        // console.log(time)
-      }
+      // for (var i = 0; i < data.list.length; i++) {
+      //   console.log(data.list[i])
+      //   if (data.list[i] >=startDate &&dailyForecast[i]< endDate){
+      //     renderForecastCard(data.list[i])
+      //   }
+      //   var time = moment(data.list[i].dt)
+      //   console.log(time)
+      // }
 
     })
 })

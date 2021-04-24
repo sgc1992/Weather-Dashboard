@@ -1,6 +1,7 @@
 var locationInput = document.querySelector("#search");
 var locationSpan = document.querySelector("#location-span");
 var submitButton = document.getElementById("submit")
+var displayResults = document.getElementById("card")
 
 submitButton.addEventListener('click', function (name) {
   var locationInput = document.querySelector("#locationInput")
@@ -22,12 +23,29 @@ submitButton.addEventListener('click', function (name) {
       varKey = "location";
       varValue = data.name;
       window.localStorage.setItem(varKey, varValue);
+      var cityName=localStorage.getItem("location");
+      var div =document.createElement("div");
+      div.textContent=cityName
+      displayResults.appendChild(div);
+
+      
       varKey = "temperature";
       varValue = data.main.temp;
       window.localStorage.setItem(varKey, varValue);
+      var temp=localStorage.getItem("temperature")
+      var div =document.createElement("div");
+      div.textContent=temp
+      displayResults.appendChild(div);
+
+
       varKey = "wind";
       varValue = data.wind.speed;
       window.localStorage.setItem(varKey, varValue);
+      var wind=localStorage.getItem("wind")
+      var div =document.createElement("div");
+      div.textContent=wind
+      displayResults.appendChild(div);
+      
     })
 
 
@@ -36,9 +54,9 @@ submitButton.addEventListener('click', function (name) {
     .then(data => {
       console.log(data)
       for (var i = 0; i < data.list.length; i++) {
-        console.log(data.list[i])
+        // console.log(data.list[i])
         var time = moment(data.list[i].dt)
-        console.log(time)
+        // console.log(time)
       }
 
     })

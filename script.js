@@ -53,14 +53,7 @@ submitButton.addEventListener('click', function (name) {
     .then(response => response.json())
     .then(data => {
       console.log(data.list)
-      // for (var i = 0; i < data.list.length; i++) {
-      //   console.log(data.list[i])
-      //   if (data.list[i] >=startDate &&dailyForecast[i]< endDate){
-      //     renderForecastCard(data.list[i])
-      //   }
-      //   var time = moment(data.list[i].dt)
-      //   console.log(time)
-      // }
+      
       
 
     })

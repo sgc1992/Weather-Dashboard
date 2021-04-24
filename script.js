@@ -19,9 +19,15 @@ submitButton.addEventListener('click', function (name) {
       document.getElementById("wind").textContent = data.wind.speed;
       document.getElementById("humidity").textContent = data.main.humidity;
       // document.getElementById("uv-index").textContent = data.main.humidity;
-      varkey = current-location.value;
-      varValue = data.name.value;
-      window.localStorage.setItem(varkey, varValue);
+      varKey = "location";
+      varValue = data.name;
+      window.localStorage.setItem(varKey, varValue);
+      varKey = "temperature";
+      varValue = data.main.temp;
+      window.localStorage.setItem(varKey, varValue);
+      varKey = "wind";
+      varValue = data.wind.speed;
+      window.localStorage.setItem(varKey, varValue);
     })
 
 

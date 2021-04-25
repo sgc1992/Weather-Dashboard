@@ -47,11 +47,7 @@ submitButton.addEventListener('click', function (name) {
       displayResults.appendChild(div);
 
     })
-
-
-  fetch('https://api.openweathermap.org/data/2.5/forecast/daily?q=' + locationInput.value + '&cnt={5}' + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f' + '&units=metric')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
+    
+  //API KEY 07d0c65f5c20674ff54bcddb4b9e892f
+ 
 })

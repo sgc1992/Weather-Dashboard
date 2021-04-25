@@ -23,38 +23,35 @@ submitButton.addEventListener('click', function (name) {
       varKey = "location";
       varValue = data.name;
       window.localStorage.setItem(varKey, varValue);
-      var cityName=localStorage.getItem("location");
-      var div =document.createElement("div");
-      div.textContent=cityName
+      var cityName = localStorage.getItem("location");
+      var div = document.createElement("div");
+      div.textContent = cityName
       displayResults.appendChild(div);
 
-      
+
       varKey = "temperature";
       varValue = data.main.temp;
       window.localStorage.setItem(varKey, varValue);
-      var temp=localStorage.getItem("temperature")
-      var div =document.createElement("div");
-      div.textContent=temp
+      var temp = localStorage.getItem("temperature")
+      var div = document.createElement("div");
+      div.textContent = temp
       displayResults.appendChild(div);
 
 
       varKey = "wind";
       varValue = data.wind.speed;
       window.localStorage.setItem(varKey, varValue);
-      var wind=localStorage.getItem("wind")
-      var div =document.createElement("div");
-      div.textContent=wind
+      var wind = localStorage.getItem("wind")
+      var div = document.createElement("div");
+      div.textContent = wind
       displayResults.appendChild(div);
 
     })
 
 
-  fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f'+ '&units=metric')
+  fetch('https://api.openweathermap.org/data/2.5/forecast/daily?q=' + locationInput.value + '&cnt={5}' + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f' + '&units=metric')
     .then(response => response.json())
     .then(data => {
-      console.log(data.list)
-      
-      
-
+      console.log(data)
     })
 })

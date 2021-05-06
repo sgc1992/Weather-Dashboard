@@ -32,6 +32,11 @@ submitButton.addEventListener('click', function (name) {
     .then(data => {
       console.log(data);
 
+
+      for(var i=0;i<5;i++){
+        console.log(data.daily[i].humidity)
+        console.log(data.daily[i].temp.day);
+      }
       // data.daily has the 7 day forecast
       
     });

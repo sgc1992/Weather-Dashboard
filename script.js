@@ -34,7 +34,6 @@ submitButton.addEventListener('click', function (name) {
 
       // data.daily has the 7 day forecast
       
-      
     });
     
   

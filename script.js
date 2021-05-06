@@ -10,7 +10,29 @@ submitButton.addEventListener('click', function (name) {
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f' + '&units=metric')
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      const html = `
+      <div class="card text-white bg-dark mb-3" style="max-width: 10rem;">
+      <div id="icon"><img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png"/></div>
+      <label>Location</label>
+      <p id="current-location">${data.name}</p>
+      <label>Temperature</label>
+      <p id="current-temp">${data.main.temp}</p>
+      <label>Wind</label>
+      <p id="wind">${data.wind.speed}</p>
+      <label>Humidity</label>
+      <p id="humidity">${data.main.humidity}</p>
+      <label>UV Index</label>
+      <p id="uv-index"></p></div>`
+
+      document.getElementById("current-weather").innerHTML = html;
+
+      return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=07d0c65f5c20674ff54bcddb4b9e892f`);
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+      // data.daily has the 7 day forecast
       var icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
       var newImage = document.createElement("img") //make an img tag.
       newImage.setAttribute('src', icon)
@@ -19,35 +41,20 @@ submitButton.addEventListener('click', function (name) {
       document.getElementById("current-temp").textContent = data.main.temp;
       document.getElementById("wind").textContent = data.wind.speed;
       document.getElementById("humidity").textContent = data.main.humidity;
-      // document.getElementById("uv-index").textContent = data.main.humidity;
-      varKey = "location";
-      varValue = data.name;
-      window.localStorage.setItem(varKey, varValue);
-      var cityName = localStorage.getItem("location");
-      var div = document.createElement("div");
-      div.textContent = cityName
-      displayResults.appendChild(div);
-
-
-      varKey = "temperature";
-      varValue = data.main.temp;
-      window.localStorage.setItem(varKey, varValue);
-      var temp = localStorage.getItem("temperature")
-      var div = document.createElement("div");
-      div.textContent = temp
-      displayResults.appendChild(div);
-
-
-      varKey = "wind";
-      varValue = data.wind.speed;
-      window.localStorage.setItem(varKey, varValue);
-      var wind = localStorage.getItem("wind")
-      var div = document.createElement("div");
-      div.textContent = wind
-      displayResults.appendChild(div);
-
-    })
+      
+    });
     
-  //API KEY 07d0c65f5c20674ff54bcddb4b9e892f
- 
+  
 })
+
+// fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + locationInput.value + '&appid=' + 'accd5d59f380f6347ac44664ded3ecef')
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log('5 day')
+//       console.log(data)
+//       for (let i = 0; i < data.list.length; i = i + 9) {
+//         // this gets the forecast every 24 hours for 5 days
+//         // use this to generate the 5 day forecast elements in the html
+//         console.log(data.list[i])
+//       }
+//     });

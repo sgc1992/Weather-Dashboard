@@ -44,7 +44,6 @@ submitButton.addEventListener('click', function (name) {
       <div class="card text-white bg-dark mb-3" style="max-width: 10rem;">
       <div id="icon"><img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png"/></div>
       <label>Location</label>
-      <p id="current-location">${data.timezone}</p>
       <label>Temperature</label>
       <p id="current-temp">${data.daily[i].temp.day}</p>
       <label>Wind</label>
@@ -53,7 +52,7 @@ submitButton.addEventListener('click', function (name) {
       <p id="humidity">${data.daily[i].humidity}</p>
       <label>UV Index</label>
       <p id="uv-index"></p></div>`
-      document.getElementById("5 Days Forecast").innerHTML = html;
+      document.getElementById("5 Days Forecast").innerHTML += html;
       }
       // data.daily has the 7 day forecast
 

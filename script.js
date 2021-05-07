@@ -5,10 +5,16 @@ var locationSpan = document.querySelector("#location-span");
 var submitButton = document.getElementById("submit")
 var displayResults = document.getElementById("card")
 
+
+
 //created a function for click wth addEvent listener
 submitButton.addEventListener('click', function (name) {
-  var locationInput = document.querySelector("#locationInput")
-  console.log(locationInput.value)
+
+  
+  var locationInput = document.querySelector("#locationInput");
+  console.log(locationInput.value);
+  localStorage.setItem('location', locationInput.value);
+ 
 
 //fetching the data from the open weather api with api Key with units of measurement as metric
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f' + '&units=metric')
@@ -17,7 +23,7 @@ submitButton.addEventListener('click', function (name) {
 //Using template Literals with placeholder
       const html = `
       <div>Current-Weather</div>
-      <div class="card text-white bg-dark mb-3" style="max-width: 10rem;">
+      <div class="card text-white bg-dark mb-3 col-lg-12 col-sm-12 col-md-12" style="max-width: 10rem;">
       <div id="icon"><img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png"/></div>
       <label>Location</label>
       <p id="current-location">${data.name}</p>
@@ -47,7 +53,7 @@ submitButton.addEventListener('click', function (name) {
         console.log(data.daily[i].wind_speed);
 
         const html = `
-      <div class="card text-white bg-dark mb-3" style="max-width: 10rem;">
+      <div class="card text-white bg-dark mb-3 col-lg-2 col-sm-12 col-md-2">
       <div id="icon"><img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png"/></div>
       <label>Location</label>
       <label>Temperature</label>
@@ -58,7 +64,7 @@ submitButton.addEventListener('click', function (name) {
       <p id="humidity">${data.daily[i].humidity}</p>
       <label>UV Index</label>
       <p id="uv-index"></p></div>`
-        document.getElementById("5 Days Forecast").innerHTML += html;
+        document.getElementById("info").innerHTML += html;
       }
       
 
@@ -67,4 +73,11 @@ submitButton.addEventListener('click', function (name) {
 
 
 })
+
+// var location = JSON.stringify(localStorage.getItem('location')) || "testing";
+
+// var button = document.createElement("button");
+// button.innerText = location;
+
+// document.getElementById("results").append(button);
 

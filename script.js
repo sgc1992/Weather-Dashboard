@@ -11,6 +11,7 @@ submitButton.addEventListener('click', function (name) {
     .then(response => response.json())
     .then(data => {
       const html = `
+      <div>Current-Weather</div>
       <div class="card text-white bg-dark mb-3" style="max-width: 10rem;">
       <div id="icon"><img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png"/></div>
       <label>Location</label>
@@ -21,8 +22,7 @@ submitButton.addEventListener('click', function (name) {
       <p id="wind">${data.wind.speed}</p>
       <label>Humidity</label>
       <p id="humidity">${data.main.humidity}</p>
-      <label>UV Index</label>
-      <p id="uv-index"></p></div>`
+      </div>`
 
       document.getElementById("current-weather").innerHTML = html;
 
@@ -31,6 +31,7 @@ submitButton.addEventListener('click', function (name) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
+
 
 
       for (var i = 0; i < 5; i++) {
@@ -52,7 +53,7 @@ submitButton.addEventListener('click', function (name) {
       <p id="humidity">${data.daily[i].humidity}</p>
       <label>UV Index</label>
       <p id="uv-index"></p></div>`
-      document.getElementById("5 Days Forecast").innerHTML += html;
+        document.getElementById("5 Days Forecast").innerHTML += html;
       }
       // data.daily has the 7 day forecast
 

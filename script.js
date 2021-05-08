@@ -62,8 +62,7 @@ submitButton.addEventListener('click', function (name) {
       <p id="wind">${data.daily[i].wind_speed}</p>
       <label>Humidity</label>
       <p id="humidity">${data.daily[i].humidity}</p>
-      <label>UV Index</label>
-      <p id="uv-index"></p></div>`
+      </div>`
         document.getElementById("info").innerHTML += html;
       }
       

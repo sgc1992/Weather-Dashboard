@@ -10,20 +10,21 @@ var displayResults = document.getElementById("card")
 //created a function for click wth addEvent listener
 submitButton.addEventListener('click', function (name) {
 
-  
-  var locationInput = document.querySelector("#locationInput");
-  console.log(locationInput.value);
-  localStorage.setItem('location', locationInput.value);
- 
 
-//fetching the data from the open weather api with api Key with units of measurement as metric
+  var locationInput = document.querySelector("#locationInput");
+  // console.log(locationInput.value);
+  localStorage.setItem('location', locationInput.value);
+
+
+  //fetching the data from the open weather api with api Key with units of measurement as metric
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + locationInput.value + '&appid=' + '07d0c65f5c20674ff54bcddb4b9e892f' + '&units=metric')
     .then(response => response.json())
     .then(data => {
-//Using template Literals with placeholder
+      //Using template Literals with placeholder
       const html = `
-      <div>Current-Weather</div>
+      
       <div class="card text-white bg-dark mb-3 col-lg-12 col-sm-12 col-md-12" style="max-width: 10rem;">
+      <div>Current-Weather</div>
       <div id="icon"><img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png"/></div>
       <label>Location</label>
       <p id="current-location">${data.name}</p>
@@ -34,17 +35,17 @@ submitButton.addEventListener('click', function (name) {
       <label>Humidity</label>
       <p id="humidity">${data.main.humidity}</p>
       </div>`
-//getting element by id and adding content to the html element
+      //getting element by id and adding content to the html element
       document.getElementById("current-weather").innerHTML = html;
 
       return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=07d0c65f5c20674ff54bcddb4b9e892f&units=metric`);
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
 
 
-//created a for loop for 5 days forecast from the fetch that returns 7 days forecast
+      //created a for loop for 5 days forecast from the fetch that returns 7 days forecast
       for (var i = 0; i < 5; i++) {
         console.log(data.timezone);
         console.log(data.daily[i].weather[0].icon);
@@ -53,7 +54,8 @@ submitButton.addEventListener('click', function (name) {
         console.log(data.daily[i].wind_speed);
 
         const html = `
-      <div class="card text-white bg-dark mb-3 col-lg-2 col-sm-12 col-md-2">
+        
+      <div class="card text-white bg-dark mb-3 col-lg-2 col-sm-12 col-md-2"><h2>5 Days Forecast</h2>
       <div id="icon"><img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png"/></div>
       <label>Location</label>
       <label>Temperature</label>
@@ -65,7 +67,7 @@ submitButton.addEventListener('click', function (name) {
       </div>`
         document.getElementById("info").innerHTML += html;
       }
-      
+
 
 
     });

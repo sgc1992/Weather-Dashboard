@@ -8,4 +8,4 @@ https://sgc1992.github.io/Weather-Dashboard/
 https://github.com/sgc1992/Weather-Dashboard
 ## Technologies used
 HTML, JavaScript, CSS, Bootstrap andOpen Weather API.
-![](./screenshot.PNG "Description goes here")
+## ![](./screenshot.PNG "Description goes here")
